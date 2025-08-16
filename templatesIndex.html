@@ -1,0 +1,47 @@
+<!-- templates/index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Card Mockups — SAMPLE / TEST</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <h1>Card Mockups — <span class="tag">SAMPLE • FOR TESTING ONLY</span></h1>
+      <p class="desc">Educational demo — all card numbers are test-like and not usable for real transactions.</p>
+    </header>
+
+    <section class="grid">
+      {% for c in cards %}
+      <article class="card">
+        <div class="card-front">
+          <div class="brand">{{ c.brand }} <small class="test">(TEST)</small></div>
+          <div class="chip"></div>
+          <div class="number">{{ c.display }}</div>
+          <div class="row">
+            <div class="name">{{ c.name.upper() }}</div>
+            <div class="expiry">
+              <div class="label">VALID<br>THRU</div>
+              <div class="val">{{ c.expiry }}</div>
+            </div>
+          </div>
+          <div class="watermark">SAMPLE - FOR TESTING ONLY</div>
+        </div>
+
+        <div class="card-meta">
+          <div><strong>Masked:</strong> {{ c.masked }}</div>
+          <div><strong>CVV (demo):</strong> {{ c.cvv }}</div>
+          <div><strong>ID:</strong> {{ c.id }}</div>
+        </div>
+      </article>
+      {% endfor %}
+    </section>
+    <footer class="footer">
+      <small>Assignment demo — generated on the fly.</small>
+    </footer>
+  </main>
+</body>
+</html>

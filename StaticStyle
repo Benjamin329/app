@@ -1,0 +1,102 @@
+/* static/style.css - animated purple 'live wallpaper' + card styles */
+:root{
+  --bg1:#6e1a8d;
+  --bg2:#8e44ad;
+  --bg3:#b57edc;
+  --card-alpha: rgba(255,255,255,0.06);
+  --card-contrast: rgba(255,255,255,0.12);
+  --accent: #efe3ff;
+  --glass: rgba(255,255,255,0.9);
+  --text: #efeef5;
+}
+
+*{box-sizing:border-box;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+
+html,body,#app{height:100%}
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  color:var(--text);
+  /* animated gradient */
+  background: linear-gradient(-45deg, var(--bg1), var(--bg2), var(--bg3));
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+  padding:32px;
+}
+@keyframes gradientBG{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+.page{width:100%;max-width:1200px}
+.topbar{margin-bottom:18px;text-align:center}
+.topbar h1{font-weight:700;margin:0;font-size:22px}
+.topbar .tag{background:rgba(255,255,255,0.12);padding:4px 8px;border-radius:8px;color:#fff;margin-left:8px;font-size:12px}
+.topbar .desc{opacity:0.9;margin-top:6px;font-size:13px}
+
+.grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap:20px;
+}
+
+/* Card tile */
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.04));
+  border-radius:14px;
+  padding:12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Front mockup */
+.card-front{
+  position:relative;
+  height:160px;
+  border-radius:10px;
+  overflow:hidden;
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  background: linear-gradient(120deg, rgba(255,255,255,0.03), rgba(0,0,0,0.06));
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* brand + chip */
+.brand{font-weight:700;font-size:18px;align-self:flex-end}
+.brand .test{font-size:9px;margin-left:6px;opacity:0.9}
+
+/* chip */
+.chip{
+  width:56px;height:40px;border-radius:6px;background:linear-gradient(180deg,#e8d9ad,#d9c399);
+  box-shadow: inset 0 -4px 10px rgba(0,0,0,0.15);
+}
+
+/* number */
+.number{font-family:monospace;font-size:18px;letter-spacing:2px;color:var(--accent);margin-top:4px}
+
+/* bottom row */
+.row{display:flex;justify-content:space-between;align-items:flex-end}
+.name{font-size:13px}
+.expiry{font-size:12px;text-align:right}
+.expiry .label{font-size:10px;opacity:0.85;line-height:1}
+
+/* watermark */
+.watermark{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-30deg);
+  font-size:12px;opacity:0.09;white-space:nowrap;font-weight:700;
+}
+
+/* meta below the front */
+.card-meta{margin-top:10px;font-size:13px;line-height:1.35;color:#f3eefe}
+
+/* small responsive tweak */
+@media (max-width:420px){
+  .card-front{height:150px;padding:12px}
+  .number{font-size:16px}
+}
